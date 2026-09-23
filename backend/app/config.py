@@ -3,7 +3,9 @@ import os
 from pathlib import Path
 
 # Finds .env in backend/ first, then falls back to project root
+load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent / ".env")
 load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent.parent / ".env")
+
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_PUBLISHABLE_KEY = os.getenv("SUPABASE_PUBLISHABLE_KEY")

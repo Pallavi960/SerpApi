@@ -8,7 +8,8 @@ app = FastAPI(title="TripWise AI API", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -21,9 +22,9 @@ app.include_router(travel.router, prefix="/api")
 @app.on_event("startup")
 def startup():
     if SUPABASE_URL:
-        print(f"✅ Supabase connected: {SUPABASE_URL}")
+        print(f"[OK] Supabase connected: {SUPABASE_URL}")
     else:
-        print("⚠️  SUPABASE_URL not set")
+        print("[WARN] SUPABASE_URL not set")
 
 
 @app.get("/")

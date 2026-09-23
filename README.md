@@ -98,12 +98,16 @@ Runs at: `http://localhost:3000`
 
 ## API Endpoints
 
-| Method | Path                        | Description                  |
-|--------|-----------------------------|------------------------------|
-| GET    | /api/health                 | Health check                 |
-| POST   | /api/trip/preferences       | Save trip preferences        |
-| POST   | /api/travel/search          | General SerpApi search       |
-| POST   | /api/travel/destinations    | Destination discovery        |
+| Method | Path                        | Description                                    |
+|--------|-----------------------------|------------------------------------------------|
+| GET    | /api/health                 | Health check                                   |
+| POST   | /api/trip/preferences       | Save trip preferences                          |
+| POST   | /api/travel/search          | General SerpApi search                         |
+| POST   | /api/travel/destinations    | Destination discovery                          |
+| POST   | /api/travel/hotels          | Live hotel comparison via Google Hotels API    |
+| POST   | /api/travel/flights         | Live flights & transit via Google Flights API  |
+| POST   | /api/travel/attractions     | Local sightseeing, food & attractions discovery |
+| POST   | /api/travel/itinerary       | AI Day-by-Day itinerary generation             |
 
 ---
 
@@ -114,7 +118,8 @@ Runs at: `http://localhost:3000`
 - Phase 3  — Backend API structure ✅
 - Phase 4  — SerpApi integration ✅
 - Phase 5  — Destination discovery ✅
-- Phase 6  — Flight & hotel comparison
-- Phase 7  — AI itinerary generation
-- Phase 8  — Trip replanning
+- Phase 6  — Flight & hotel comparison ✅
+- Phase 7  — AI itinerary generation ✅
+- Phase 8  — Trip replanning & customization
 - Phase 9  — UI polish & hackathon demo
+

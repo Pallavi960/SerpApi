@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import DestinationCard from './DestinationCard'
+import TripDetailModal from './TripDetailModal'
 
 function SkeletonCard({ tall }) {
   return (
@@ -7,6 +9,8 @@ function SkeletonCard({ tall }) {
 }
 
 export default function DestinationResults({ status, destinations, queryUsed, preferences, onChangePreferences }) {
+  const [selectedDestination, setSelectedDestination] = useState(null)
+
   return (
     <section id="discover" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -45,7 +49,7 @@ export default function DestinationResults({ status, destinations, queryUsed, pr
 
             {queryUsed && status === 'success' && (
               <p className="text-xs text-slate-400 mt-3 font-mono">
-                Search: "{queryUsed}"
+                Search: "{queryUsed}" &bull; <span className="text-cyan-600 font-semibold">Click any destination to see AI itinerary & live stays</span>
               </p>
             )}
           </div>
@@ -74,18 +78,40 @@ export default function DestinationResults({ status, destinations, queryUsed, pr
             {/* Featured + side grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
               <div className="sm:col-span-2">
-                <DestinationCard destination={destinations[0]} index={0} featured />
+                <DestinationCard
+                  destination={destinations[0]}
+                  index={0}
+                  featured
+                  onSelect={setSelectedDestination}
+                />
               </div>
               <div className="flex flex-col gap-4">
-                {destinations[1] && <DestinationCard destination={destinations[1]} index={1} />}
-                {destinations[2] && <DestinationCard destination={destinations[2]} index={2} />}
+                {destinations[1] && (
+                  <DestinationCard
+                    destination={destinations[1]}
+                    index={1}
+                    onSelect={setSelectedDestination}
+                  />
+                )}
+                {destinations[2] && (
+                  <DestinationCard
+                    destination={destinations[2]}
+                    index={2}
+                    onSelect={setSelectedDestination}
+                  />
+                )}
               </div>
             </div>
             {/* Remaining grid */}
             {destinations.length > 3 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {destinations.slice(3).map((dest, i) => (
-                  <DestinationCard key={i} destination={dest} index={i + 3} />
+                  <DestinationCard
+                    key={i}
+                    destination={dest}
+                    index={i + 3}
+                    onSelect={setSelectedDestination}
+                  />
                 ))}
               </div>
             )}
@@ -115,6 +141,16 @@ export default function DestinationResults({ status, destinations, queryUsed, pr
         )}
 
       </div>
+
+      {/* Trip Details Modal */}
+      {selectedDestination && (
+        <TripDetailModal
+          destination={selectedDestination}
+          preferences={preferences}
+          onClose={() => setSelectedDestination(null)}
+        />
+      )}
     </section>
   )
 }
+

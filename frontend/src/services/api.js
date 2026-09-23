@@ -24,3 +24,20 @@ export function submitTripPreferences(preferences) {
 export function fetchDestinations(preferences) {
   return post('/api/travel/destinations', preferences)
 }
+
+export function fetchHotels(params) {
+  return post('/api/travel/hotels', params)
+}
+
+export function fetchFlights(params) {
+  return post('/api/travel/flights', params)
+}
+
+export function fetchAttractions(params) {
+  return post('/api/travel/attractions', params)
+}
+
+export function generateItinerary(params) {
+  return post('/api/travel/itinerary', params)
+}
+
