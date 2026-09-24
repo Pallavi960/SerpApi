@@ -364,9 +364,8 @@ export default function TripDetailModal({ destination, preferences, onClose }) {
                           </a>
                         )}
                       </div>
-                      </div>
                     </div>
-                  ))}}
+                  ))}
                 </div>
               )}
             </div>

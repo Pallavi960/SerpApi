@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+// Leaflet CSS is loaded globally via index.html
 import { loadGoogleMaps } from '../utils/loadGoogleMaps';
 import { MapPin, Navigation, Sparkles, Car } from 'lucide-react';
 
