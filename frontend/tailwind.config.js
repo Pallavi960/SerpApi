@@ -58,6 +58,7 @@ export default {
         'float':       'float 6s ease-in-out infinite',
         'fade-up':     'fadeUp 0.6s ease-out forwards',
         'fade-in':     'fadeIn 0.4s ease-out forwards',
+        'shimmer':     'shimmer 1.5s infinite',
       },
       keyframes: {
         float: {
@@ -71,6 +72,10 @@ export default {
         fadeIn: {
           '0%':   { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        shimmer: {
+          '0%':   { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
         },
       },
     },

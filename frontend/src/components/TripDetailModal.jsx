@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { generateItinerary, fetchHotels, fetchFlights, fetchAttractions } from '../services/api'
+import PlaceImage from './PlaceImage'
 
 export default function TripDetailModal({ destination, preferences, onClose }) {
   const [activeTab, setActiveTab] = useState('itinerary')
@@ -322,11 +323,17 @@ export default function TripDetailModal({ destination, preferences, onClose }) {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {hotels.map((hotel, idx) => (
-                    <div key={idx} className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-cyan-400 transition-all">
-                      <div>
-                        {hotel.image && (
-                          <img src={hotel.image} alt={hotel.name} className="w-full h-36 object-cover rounded-xl mb-3" />
-                        )}
+                    <div key={idx} className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:border-cyan-400 transition-all">
+                      <div className="relative h-36">
+                        <PlaceImage
+                          query={hotel.image ? null : `${hotel.name} ${destName} hotel`}
+                          fallbackSrc={hotel.image || null}
+                          alt={hotel.name}
+                          className="w-full h-full object-cover"
+                          skeletonClassName="absolute inset-0"
+                        />
+                      </div>
+                      <div className="p-5 flex flex-col flex-1 justify-between">
                         <div className="flex items-start justify-between gap-2">
                           <h4 className="font-bold text-slate-900 text-base leading-tight">{hotel.name}</h4>
                           {hotel.rating && (
@@ -357,8 +364,9 @@ export default function TripDetailModal({ destination, preferences, onClose }) {
                           </a>
                         )}
                       </div>
+                      </div>
                     </div>
-                  ))}
+                  ))}}
                 </div>
               )}
             </div>

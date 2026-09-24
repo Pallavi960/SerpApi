@@ -1,6 +1,7 @@
 {
-  "name": "tripwise-ai-frontend",
-  "version": "0.1.0",
+  "name": "travelos-ai-frontend",
+  "version": "1.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -8,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "canvas-confetti": "^1.9.4",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.47.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
